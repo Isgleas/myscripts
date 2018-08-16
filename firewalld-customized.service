@@ -1,0 +1,12 @@
+[Unit]
+Description=Firewalld customized after rules
+After=firewalld.service libvirtd.service
+
+[Service]
+ExecStart=/usr/local/sbin/firewalld-vnics_trusted.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
+# /usr/lib/systemd/system/
