@@ -1,12 +1,14 @@
 [Unit]
 Description=Firewalld customized after rules
-After=firewalld.service libvirtd.service
+After=NetworkManager.service firewalld.service libvirtd.service
 
 [Service]
 ExecStart=/usr/local/sbin/firewalld-vnics_trusted.sh
-Restart=on-abort
+ExecReload=/usr/local/sbin/firewalld-vnics_trusted.sh
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
+TriggeredBy=NetworkManager.service
 
 # /usr/lib/systemd/system/
